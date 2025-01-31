@@ -16,7 +16,7 @@ public class Journal
         {
             foreach (Entry entry in _entries) 
             {
-                Console.WriteLine($"\n{entry._prompt} | {entry._response} | {entry._date} | {entry._location} | {entry._mood} | {entry._weather}");
+                Console.WriteLine($"\n{entry._prompt} | {entry._promptResponse} | {entry._date} | {entry._location} | {entry._mood} | {entry._weather}");
             }
         }
     }

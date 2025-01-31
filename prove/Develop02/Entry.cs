@@ -1,7 +1,7 @@
 public class Entry
 {
     public string _prompt;
-    public string _response;
+    public string _promptResponse;
     public DateTime _date; 
     public string _location;
     public string _mood;
@@ -10,7 +10,7 @@ public class Entry
     public Entry(string prompt, string promptResponse, string location, string mood, string weather)
     {
         _prompt = prompt;
-        _response = promptResponse;
+        _promptResponse = promptResponse;
         _date = DateTime.Now;  
         _location = location;
         _mood = mood;
@@ -19,7 +19,7 @@ public class Entry
 
     public string GetEntryText()
     {
-        return $"\n{_prompt} | {_response} | {_date} | {_location} | {_mood} | {_weather}";
+        return $"\n{_prompt} | {_promptResponse} | {_date} | {_location} | {_mood} | {_weather}";
     }
 }
 
