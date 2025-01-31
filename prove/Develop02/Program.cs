@@ -41,7 +41,6 @@ public class Program
                 string weather = Console.ReadLine();
 
                 journal.AddEntry(prompt, promptResponse, location, mood, weather);
-                Console.Write("> ");
                 Console.WriteLine("\nEntry added.");
             }
 
