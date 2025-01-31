@@ -1,18 +1,27 @@
-using System;
-
 public class Entry
 {
     public string _prompt;
     public string _response;
+    public DateTime _date; 
+    public string _location;
+    public string _mood;
+    public string _weather;
 
-    public Entry(string prompt, string response)
+    public Entry(string prompt, string promptResponse, string location, string mood, string weather)
     {
         _prompt = prompt;
-        _response = response;
+        _response = promptResponse;
+        _date = DateTime.Now;  
+        _location = location;
+        _mood = mood;
+        _weather = weather;
     }
 
     public string GetEntryText()
     {
-        return _prompt + " | " + _response;
+        return $"\n{_prompt} | {_response} | {_date} | {_location} | {_mood} | {_weather}";
     }
 }
+
+
+

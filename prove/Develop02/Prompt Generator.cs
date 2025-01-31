@@ -13,7 +13,11 @@ public class PromptGenerator
             "What are you grateful for today?",
             "What is one thing you would like to do better tomorrow?",
             "What is something you learned today?",
-            "What made you smile today?"
+            "What made you smile today?",
+            "Who was the most interesting person I interacted with today?",
+            "How did I see the hand of the Lord in my life today?",
+            "If I had one thing I could do over today, what would it be?",
+            "What was the strongest emotion I felt today?"
         };
 
         _random = new Random();

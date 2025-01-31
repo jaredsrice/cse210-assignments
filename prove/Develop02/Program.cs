@@ -19,14 +19,29 @@ public class Program
 
             string choice = Console.ReadLine();
 
+// I feel like I exceeded requirements here by adding way more prompts than originally asked for, and did
+// all the required code changes to reflect that in both my Entry class and most of the Journal class. 
             if (choice == "1")
-           {
+            {
                 string prompt = promptGenerator.GetPrompt();
                 Console.WriteLine("\nPrompt: " + prompt);
                 Console.Write("> ");
-                string response = Console.ReadLine();
+                string promptResponse = Console.ReadLine();
 
-                journal.AddEntry(prompt, response);
+                Console.WriteLine("\nEnter the location:");
+                Console.Write("> ");
+                string location = Console.ReadLine();
+
+                Console.WriteLine("\nEnter your mood: ");
+                Console.Write("> ");
+                string mood = Console.ReadLine();
+
+                Console.WriteLine("\nEnter the weather: ");
+                Console.Write("> ");
+                string weather = Console.ReadLine();
+
+                journal.AddEntry(prompt, promptResponse, location, mood, weather);
+                Console.Write("> ");
                 Console.WriteLine("\nEntry added.");
             }
 
@@ -37,11 +52,10 @@ public class Program
             
             else if (choice == "3")
             {
-                Console.Write("Enter a filename to save your journal: ");
+                Console.Write("\nEnter a filename to save your journal: ");
                 string filename = Console.ReadLine();
                 journal.SaveJournal(filename);
             }
-
 
             else if (choice == "4")
             {
@@ -52,7 +66,7 @@ public class Program
 
             else if (choice == "5")
             {
-                Console.WriteLine(" ByE ByE"); 
+                Console.WriteLine("\nByE ByE\n"); 
                 break;
             }
 
