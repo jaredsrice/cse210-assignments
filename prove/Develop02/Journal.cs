@@ -14,10 +14,17 @@ public class Journal
 
         else
         {
-            foreach (Entry entry in _entries) 
+            foreach (Entry entry in _entries)
             {
-                Console.WriteLine($"\n{entry._prompt} | {entry._promptResponse} | {entry._date} | {entry._location} | {entry._mood} | {entry._weather}");
+                Console.WriteLine($"{entry._prompt}");
+                Console.WriteLine($"{entry._promptResponse.Trim()}");
+                Console.WriteLine($"Time: {entry._date}");
+                Console.WriteLine($"Location: {entry._location.Trim()}");
+                Console.WriteLine($"Mood: {entry._mood.Trim()}");
+                Console.WriteLine($"Weather: {entry._weather.Trim()}\n");
             }
+
+
         }
     }
 
