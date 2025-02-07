@@ -1,0 +1,39 @@
+@startuml Scripture
+
+class Program {
+    +Main()
+}
+
+class Scripture {
+    -_reference: Reference
+    -_words: List<Word>
+    +Scripture(Reference obj, text: String)
+    +GetText(): String
+    +HideWords()
+    +AllWordsHidden(): Int
+}
+
+class Reference {
+    -_book: String
+    -_chapter: Int
+    -_startVerse: Int
+    -_endVerse: Int
+    +Reference(book: String, chapter: Int, verse: Int)
+    +Reference(book: String, chapter: Int, startVerse: Int, endVerse: Int)
+    +GetDisplayText(): String
+}
+
+class Word {
+    -_text: String
+    -_hidden: Int
+    +Word(text: String)
+    +HideWord()
+    +GetText(): String
+}
+
+Program --> Scripture
+Scripture <--> Reference 
+Reference --> Word
+
+
+@enduml
