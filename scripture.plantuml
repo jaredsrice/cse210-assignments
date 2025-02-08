@@ -6,9 +6,9 @@ class Program {
 
 class Scripture {
     -_reference: Reference
-    -_words: List<Word>
+    -_referenceWords: List<Word>
     +Scripture(Reference obj, text: String)
-    +GetText(): String
+    +GetScriptureText(): String
     +HideWords()
     +AllWordsHidden(): Int
 }
@@ -35,5 +35,15 @@ Program --> Scripture
 Scripture <--> Reference 
 Reference --> Word
 
+' Scripture deals with the reference and the text, it gets the reference and stores the text
+' of the ref in a list. GetScriptureText returns the scripture text, HideWords hides random words
+' with each input, and AllWordsHidden is what tells the program to quit after all words have been hidden
+
+' Reference stores the scripture reference, and it has two constructors that are utilized depending
+' on if its a single or multiple verse reference. GetDisplayText formats the reference (John 3:16) as they'll be shown
+
+' Word deals with the individual words in the reference, with the constructor making sure each word 
+' has an actual word to store, as well as if the word is hidden or not. 
+' HideWord hides the word, and getText returns the word. 
 
 @enduml
