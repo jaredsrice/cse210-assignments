@@ -5,6 +5,8 @@ class Program
 {
     static void Main()
     {
+        // Here I created a list of scriptures to choose from and then randomly chose one to display. More scriptures can be added 
+        // to the list if wanted. 
         List<Scripture> scriptures = new List<Scripture>
         {
             new Scripture(new Reference("John", 3, 16), "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."),

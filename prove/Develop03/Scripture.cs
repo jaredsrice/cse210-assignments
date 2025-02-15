@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 class Scripture
 {
@@ -21,7 +20,7 @@ class Scripture
 
     public string GetScriptureText()
     {
-        string text = _reference.GetDisplayText() + "\n";
+        string text = _reference.GetReferenceText() + "\n";
 
         foreach (Word word in _referenceWords)
         {

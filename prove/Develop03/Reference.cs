@@ -23,7 +23,7 @@ class Reference
         _endingVerse = endVerse;
     }
 
-    public string GetDisplayText()
+    public string GetReferenceText()
     {
         if (_startingVerse == _endingVerse)
         {
