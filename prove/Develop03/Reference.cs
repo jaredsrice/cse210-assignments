@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Concurrent;
 
 class Reference
 {
@@ -28,11 +27,11 @@ class Reference
     {
         if (_startingVerse == _endingVerse)
         {
-            return $"{_book} {_chapter} : {_startingVerse}";
+            return $"{_book} {_chapter}:{_startingVerse}";
         }
         else
         {
-            return $"{_book} {_chapter} : {_startingVerse} - {_endingVerse}";
+            return $"{_book} {_chapter}:{_startingVerse}-{_endingVerse}";
         }
     }
 }

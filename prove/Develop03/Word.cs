@@ -3,25 +3,31 @@ using System;
 public class Word
 {
     private string _text;
-    private int _hidden;
+    private int _hidden; 
 
     public Word(string text)
     {
         _text = text;
-        _hidden = 0;
+        _hidden = 0; 
     }
 
     public void HideWord()
     {
-        _hidden = 1;
+        if (_hidden == 0)
+        {
+            _hidden = 1;
+        }
     }
 
     public string GetText()
     {
         if (_hidden == 1)
         {
-            return "____";
+            return "_____"; 
         }
-        return _text;
+        else
+        {
+            return _text; 
+        }
     }
 }
