@@ -1,0 +1,53 @@
+@startuml mindfulness
+
+class Program {
+    +Main(): void
+}
+
+class Menu {
+    +DisplayMenu(): void
+    +GetUserChoice(): int
+    +RunChosenActivity(choice: int): void
+}
+
+class Activity {
+    -_name: string
+    -_description: string
+    -_duration: int
+    +Activity(name: string, description: string, duration: int)
+    +StartActivity(): void
+    +EndActivity(): void
+    +PauseWithSpinner(): void
+    +PauseWithCountdown(): void (i'll maybe do this, not sure yet)
+    +RunActivity(): void
+}
+
+class BreathingActivity {
+    +BreathingActivity(constructor): void
+    +RunActivity(): void
+}
+
+class ReflectingActivity {
+    -_prompts: List<string>
+    -_questions: List<string>
+    +ReflectingActivity(constructor): void
+    +RunActivity(): void
+    +GetRandomPrompt(): string
+    +GetRandomQuestion(): string
+}
+
+class ListingActivity {
+    -_prompts: List<string>
+    +ListingActivity(constructor): void
+    +RunActivity(): void
+    +GetRandomPrompt(): string
+}
+
+Program --> Menu
+Menu --> Activity
+Activity <|-- BreathingActivity
+Activity <|-- ReflectingActivity
+Activity <|-- ListingActivity
+
+@enduml
+
