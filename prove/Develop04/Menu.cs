@@ -10,9 +10,12 @@ public class Menu
             int choice = GetUserChoice();
             if (choice == 4)
             {
+                Activity activity = new Activity("Quit", "End the program", 0);
+                activity.PauseWithCountdown();
                 Console.WriteLine("\nProgram go bye bye.\n");
                 return;
             }
+
             RunActivity(choice);
             Console.WriteLine();
         }
@@ -20,10 +23,10 @@ public class Menu
     public void DisplayMenu()
     {
         Console.WriteLine("\nPlease choose an activity:");
-        Console.WriteLine("1. Breathing Activity");
-        Console.WriteLine("2. Reflecting Activitiy");
-        Console.WriteLine("3. Listing Activity");
-        Console.WriteLine("4. Quit\n");
+        Console.WriteLine("   1. Breathing Activity");
+        Console.WriteLine("   2. Reflecting Activity");
+        Console.WriteLine("   3. Listing Activity");
+        Console.WriteLine("   4. Quit\n");
     }
     
     public int GetUserChoice()
@@ -43,6 +46,13 @@ public class Menu
 
     public void RunActivity(int choice)
     {
+        if (choice == -1)
+        {
+            Console.WriteLine("Wrong choice, womp womp. Try again.");
+        }
+
+        Console.Clear();
+
         if (choice == 1)
         {
             Console.WriteLine("\nStarting Breathing Activity.");
@@ -64,10 +74,5 @@ public class Menu
             // activityThree.RunActivity();
         }
 
-        else
-        {
-            Console.WriteLine("Wrong choice, womp womp. Try again.");
-        }
     }
-
 }

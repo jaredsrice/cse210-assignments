@@ -1,6 +1,6 @@
 using System;
 
-class ListingActivity
+public class ListingActivity
 {
     
 }

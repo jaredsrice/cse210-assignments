@@ -1,6 +1,6 @@
 using System;
 
-class ReflectingActivity
+public class ReflectingActivity
 {
     
 }

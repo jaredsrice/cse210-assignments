@@ -1,6 +1,6 @@
 using System;
 
-class BreathingActivity
+public class BreathingActivity
 {
     
 }
