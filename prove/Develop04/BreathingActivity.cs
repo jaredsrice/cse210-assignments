@@ -29,53 +29,28 @@ public class BreathingActivity: Activity
             }
         }
 
-        int numberOfCycles = _duration / 3;
-
-        int remainder = _duration % 3;
-        int baseDuration = _duration / (numberOfCycles * 3);
-
-        int inhale = baseDuration;
-        int hold = baseDuration;
-        int exhale = baseDuration;
-
-        if (remainder > 0)
-        {
-            inhale += 1;
-        }
-
-        if (remainder > 1)
-        {
-            hold += 1;
-        }
+        int phaseTime = 5;
+        int cycles = _duration / (3 * phaseTime);
+        int remainder = _duration % (3 * phaseTime);
 
         Console.Clear();
         Console.WriteLine($"You will breathe for {_duration} seconds.\n");
         Console.WriteLine("Get ready...");
         Countdowns.SpinnerPause(3);
 
-        for (int cycle = 0; cycle < numberOfCycles; cycle++)
+        for (int c = 0; c < cycles; c++)
         {
             Console.WriteLine("\nInhale...");
-            Countdowns.SymbolCountdown(inhale);
+            Countdowns.SymbolCountdown(phaseTime);
 
             Console.WriteLine("Hold...");
-            Countdowns.SymbolCountdown(hold);
+            Countdowns.SymbolCountdown(phaseTime);
 
             Console.WriteLine("Exhale...");
-            Countdowns.SymbolCountdown(exhale);
+            Countdowns.SymbolCountdown(phaseTime);
         }
 
-        if (remainder > 0)
-        {
-            Console.WriteLine("\nInhale...");
-            Countdowns.SymbolCountdown(inhale);
-
-            Console.WriteLine("Hold...");
-            Countdowns.SymbolCountdown(hold);
-
-            Console.WriteLine("Exhale...");
-            Countdowns.SymbolCountdown(exhale); 
-        }
+        
 
         EndActivity();
     }
