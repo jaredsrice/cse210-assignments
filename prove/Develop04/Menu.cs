@@ -6,12 +6,14 @@ public class Menu
     {
         while (true)
         {
+            Console.Clear();
             DisplayMenu();
             int choice = GetUserChoice();
+
             if (choice == 4)
             {
-                Activity activity = new Activity("Quit", "End the program", 0);
-                activity.PauseWithCountdown();
+                Activity activity = new Activity("Quit", "End the program");
+                Countdowns.SymbolCountdown(5);
                 Console.WriteLine("\nProgram go bye bye.\n");
                 return;
             }
@@ -31,33 +33,32 @@ public class Menu
     
     public int GetUserChoice()
     {
-        Console.Write("Please enter your choice: ");
-        string input = Console.ReadLine();
-        if (int.TryParse(input, out int choice))
+        while(true)
         {
-            return choice;
-        }
-        else
-        {
-            Console.WriteLine("Invalid input. Please enter a number.");
-            return -1;
+            Console.Write("Please enter your choice: ");
+            string input = Console.ReadLine();
+
+            if (int.TryParse(input, out int choice) && (choice >= 1 && choice <= 4))
+            {
+                return choice;
+            }
+
+            Console.Clear();
+            Console.WriteLine("\nWomp womp, that's not a valid choice. Do it again.\n");
+            DisplayMenu();
+
         }
     }
 
     public void RunActivity(int choice)
     {
-        if (choice == -1)
-        {
-            Console.WriteLine("Wrong choice, womp womp. Try again.");
-        }
-
         Console.Clear();
 
         if (choice == 1)
         {
-            Console.WriteLine("\nStarting Breathing Activity.");
+            // Console.WriteLine("\nStarting Breathing Activity.");
             BreathingActivity activityOne = new BreathingActivity();
-            // activityOne.RunActivity();
+            activityOne.StartBreathing();
         }
 
         else if (choice == 2)
