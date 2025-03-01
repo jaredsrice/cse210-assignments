@@ -56,23 +56,20 @@ public class Menu
 
         if (choice == 1)
         {
-            // Console.WriteLine("\nStarting Breathing Activity.");
             BreathingActivity activityOne = new BreathingActivity();
             activityOne.StartBreathing();
         }
 
         else if (choice == 2)
         {
-            Console.WriteLine("\nStarting Reflecting Activity.");
             ReflectingActivity activityTwo = new ReflectingActivity();
-            // activityTwo.RunActivity();
+            activityTwo.StartReflecting();
         }
 
         else if (choice == 3)
         {
-            Console.WriteLine("\nStarting Listing Activity.");
             ListingActivity activityThree = new ListingActivity();
-            // activityThree.RunActivity();
+            activityThree.StartListing();
         }
 
     }

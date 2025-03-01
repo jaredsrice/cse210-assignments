@@ -11,30 +11,43 @@ public class BreathingActivity: Activity
     {
         base.StartActivity();
 
-        while (true)
+        int minPhaseTime;
+
+        if (_duration > 14)
         {
-            Console.WriteLine($"How long would you like to do the {_name}? (in seconds)");
-
-            string durationInput = Console.ReadLine();
-
-            if (int.TryParse(durationInput, out int duration) && duration > 0)
-            {
-                _duration = duration;
-                break;
-            }
-
-            else
-            {
-                Console.WriteLine("Womp womp, enter a valid input.");
-            }
+            minPhaseTime = 5;
         }
 
-        int phaseTime = 5;
-        int cycles = _duration / (3 * phaseTime);
-        int remainder = _duration % (3 * phaseTime);
+        else 
+        {
+            minPhaseTime = 3;
+        }
+
+        int maxPhaseTime = 10;
+        int scaledPhaseTime = _duration / 9;
+
+        if (scaledPhaseTime < minPhaseTime)
+        {
+            scaledPhaseTime = minPhaseTime;
+        }
+
+        else if (scaledPhaseTime > maxPhaseTime)
+        {
+            scaledPhaseTime = maxPhaseTime;
+        }
+
+        int cycles = _duration / (3 * scaledPhaseTime);
+
+        if (cycles < 1)
+        {
+            cycles = 1;
+        }
+
+        int phaseTime = _duration / (3 * cycles);
+        int remainder = _duration % (3 * cycles);
 
         Console.Clear();
-        Console.WriteLine($"You will breathe for {_duration} seconds.\n");
+        Console.WriteLine("You will breathe for " + _duration + " seconds.\n");
         Console.WriteLine("Get ready...");
         Countdowns.SpinnerPause(3);
 
@@ -47,10 +60,16 @@ public class BreathingActivity: Activity
             Countdowns.SymbolCountdown(phaseTime);
 
             Console.WriteLine("Exhale...");
-            Countdowns.SymbolCountdown(phaseTime);
-        }
 
-        
+            if (c == cycles - 1)
+            {
+                Countdowns.SymbolCountdown(phaseTime + remainder);
+            }
+            else
+            {
+                Countdowns.SymbolCountdown(phaseTime);
+            }
+        }
 
         EndActivity();
     }

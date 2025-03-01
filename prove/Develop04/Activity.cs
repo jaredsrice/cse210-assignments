@@ -18,6 +18,7 @@ public class Activity
    {
         Console.WriteLine($"Welcome to the {_name}.\n");
         Console.WriteLine(_description);
+        SetDuration();
    }
 
    public void EndActivity()
@@ -29,9 +30,23 @@ public class Activity
         Console.Clear();
    }
 
-//    public void RunActivity()
-//    {
-//         StartActivity();
-//         EndActivity();
-//    }
+   private void SetDuration()
+   {
+        while (true)
+        {
+            Console.WriteLine("How long would you like to do the " + _name + "? (in seconds)");
+            string durationInput = Console.ReadLine();
+
+            if (int.TryParse(durationInput, out int duration) && duration > 0)
+            {                    
+                _duration = duration;
+                break;
+            }
+
+            else
+            {
+                Console.WriteLine("Womp womp, enter a valid input.");
+            }
+        }
+   }
 }
