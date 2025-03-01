@@ -13,8 +13,8 @@ public class Menu
             if (choice == 4)
             {
                 Activity activity = new Activity("Quit", "End the program");
-                Countdowns.SymbolCountdown(5);
-                Console.WriteLine("\nProgram go bye bye.\n");
+                Countdowns.SpinnerPause(5);
+                Console.WriteLine("Program go bye bye.\n");
                 return;
             }
 

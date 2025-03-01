@@ -29,7 +29,7 @@ public class ReflectingActivity: Activity
     };
 
     public ReflectingActivity()
-    : base ("Reflecting Activity", "Take some time to think about past experiences to gain insights and new perspectives. Please have your duration be a multiple of 10.")
+    : base ("Reflecting Activity", "Take some time to think about past experiences to gain insights and new perspectives. \nPlease have your duration be a multiple of 10.")
     {
     }
 

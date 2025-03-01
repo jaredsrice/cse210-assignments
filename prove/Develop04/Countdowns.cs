@@ -9,7 +9,7 @@ public class Countdowns
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(seconds);
 
-        List<string> animation = new List<string>{"|", "/", "_", "\\", "|", "/", "‾", "\\"};
+        List<string> animation = new List<string>{"|", "/", "‾", "\\", "|", "/", "_", "\\"};
 
         int i = 0;
 
