@@ -1,0 +1,56 @@
+@startuml eternal
+class Program {
+    + Main(): void
+}
+
+class Menu {
+    + DisplayMenu(): void
+    + GetUserChoice(): int
+}
+
+class Goal {
+    # name: string
+    # description: string
+    # points: int
+    + RecordEvent(): int
+    + IsComplete(): bool
+    + GetStatus(): string
+}
+
+class SimpleGoal {
+    - completed: bool
+    + RecordEvent(): int
+    + IsComplete(): bool
+}
+
+class EternalGoal {
+    + RecordEvent(): int
+    + IsComplete(): bool
+}
+
+class ChecklistGoal {
+    - timesCompleted: int
+    - targetCount: int
+    - bonusPoints: int
+    + RecordEvent(): int
+    + IsComplete(): bool
+}
+
+class GoalManager {
+    - goals: List<Goal>
+    - totalPoints: int
+    + CreateNewGoal(): void
+    + ListGoals(): void
+    + SaveGoals(filename: string): void
+    + LoadGoals(filename: string): void
+    + RecordEvent(goalIndex: int): void
+    + GetTotalPoints(): int
+}
+
+Program --> Menu
+Menu --> GoalManager
+Goal <|-- SimpleGoal
+Goal <|-- EternalGoal
+Goal <|-- ChecklistGoal
+GoalManager --> Goal
+@enduml
