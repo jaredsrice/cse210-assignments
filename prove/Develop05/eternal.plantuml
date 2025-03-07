@@ -1,4 +1,5 @@
-@startuml eternal
+@startuml eternal 
+
 class Program {
     + Main(): void
 }
@@ -9,36 +10,39 @@ class Menu {
 }
 
 class Goal {
-    # name: string
-    # description: string
-    # points: int
+    # _name: string
+    # _description: string
+    # _points: int
     + RecordEvent(): int
     + IsComplete(): bool
     + GetStatus(): string
 }
 
 class SimpleGoal {
-    - completed: bool
+    - _completed: bool
     + RecordEvent(): int
     + IsComplete(): bool
+    + GoalStatus(): string
 }
 
 class EternalGoal {
     + RecordEvent(): int
     + IsComplete(): bool
+    + GoalStatus(): string
 }
 
 class ChecklistGoal {
-    - timesCompleted: int
-    - targetCount: int
-    - bonusPoints: int
+    - _timesCompleted: int
+    - _targetCount: int
+    - _bonusPoints: int
     + RecordEvent(): int
     + IsComplete(): bool
+    + GoalStatus(): string
 }
 
 class GoalManager {
-    - goals: List<Goal>
-    - totalPoints: int
+    - _goals: List<Goal>
+    - _totalPoints: int
     + CreateNewGoal(): void
     + ListGoals(): void
     + SaveGoals(filename: string): void
@@ -53,4 +57,24 @@ Goal <|-- SimpleGoal
 Goal <|-- EternalGoal
 Goal <|-- ChecklistGoal
 GoalManager --> Goal
+
+Goal : +RecordEvent(): int
+Goal : +IsComplete(): bool
+Goal : +GoalStatus(): string
+
+SimpleGoal : +RecordEvent(): int (override)
+SimpleGoal : +IsComplete(): bool (override)
+SimpleGoal : +GoalStatus(): string (override)
+
+EternalGoal : +RecordEvent(): int (override)
+EternalGoal : +IsComplete(): bool (override)
+EternalGoal : +GoalStatus(): string (override)
+
+ChecklistGoal : +RecordEvent(): int (override)
+ChecklistGoal : +IsComplete(): bool (override)
+ChecklistGoal : +GoalStatus(): string (override)
+
+' Just so you're aware, I did ask chat gpt to tell me the syntax
+' for overriding methods in plantuml because I couldn't find anything otherwise
+
 @enduml
