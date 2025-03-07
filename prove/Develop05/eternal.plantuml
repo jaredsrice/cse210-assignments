@@ -15,7 +15,7 @@ class Goal {
     # _points: int
     + RecordEvent(): int
     + IsComplete(): bool
-    + GetStatus(): string
+    + GoalStatus(): string
 }
 
 class SimpleGoal {
