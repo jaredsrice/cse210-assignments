@@ -13,6 +13,7 @@ class Goal {
     # _name: string
     # _description: string
     # _points: int
+    + Goal(name: string, description: string, points: int)
     + RecordEvent(): int
     + IsComplete(): bool
     + GoalStatus(): string
@@ -20,12 +21,14 @@ class Goal {
 
 class SimpleGoal {
     - _completed: bool
+    + SimpleGoal(name: string, description: string, points: int)
     + RecordEvent(): int
     + IsComplete(): bool
     + GoalStatus(): string
 }
 
 class EternalGoal {
+    + EternalGoal(name: string, description: string, points: int)
     + RecordEvent(): int
     + IsComplete(): bool
     + GoalStatus(): string
@@ -34,6 +37,7 @@ class EternalGoal {
 class ChecklistGoal {
     - _timesCompleted: int
     - _targetCount: int
+    + ChecklistGoal(name: string, description: string, points: int, targetCount: int, bonusPoints: int)
     - _bonusPoints: int
     + RecordEvent(): int
     + IsComplete(): bool
@@ -43,6 +47,7 @@ class ChecklistGoal {
 class GoalManager {
     - _goals: List<Goal>
     - _totalPoints: int
+    + GoalManager()
     + CreateNewGoal(): void
     + ListGoals(): void
     + SaveGoals(filename: string): void
