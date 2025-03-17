@@ -1,0 +1,3 @@
+SimpleGoal|A|A|10
+EternalGoal|Study the scriptures|study for at least 10 min|50
+ChecklistGoal|Attend temple|attend and perofrm any ordinance|50|3|500
