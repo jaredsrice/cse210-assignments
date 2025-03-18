@@ -15,4 +15,7 @@ public class Program
         Console.Clear();
         menu.Start();
     }
+    // Added a whole player class and implementation to track your player's score, level, etc. 
+    // Can also save/load the player data as well. Be sure to make your terminal a bit bigger
+    // to see everything. 
 }
