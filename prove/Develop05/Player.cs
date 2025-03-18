@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 public class Player
 {
@@ -42,14 +43,16 @@ public class Player
         return _score;
     }
 
+    public string GetStringRepresentation()
+    {
+        return $"Player|{_name}|{_score}|{_level}|{_experience}";
+    }
+
     public void SavePlayer(string filename)
     {
         using (StreamWriter writer = new StreamWriter(filename))
         {
-            writer.WriteLine(_name);
-            writer.WriteLine(_score);
-            writer.WriteLine(_level);
-            writer.WriteLine(_experience);
+            writer.WriteLine(GetStringRepresentation());
         }
         Console.WriteLine("Player data saved.");
     }
@@ -60,12 +63,23 @@ public class Player
         {
             using (StreamReader reader = new StreamReader(filename))
             {
-                _name = reader.ReadLine();
-                _score = int.Parse(reader.ReadLine());
-                _level = int.Parse(reader.ReadLine());
-                _experience = int.Parse(reader.ReadLine());
+                string line = reader.ReadLine();
+                string[] parts = line.Split('|');
+
+                if (parts[0] == "Player" && parts.Length == 5)
+                {
+                    _name = parts[1];
+                    _score = int.Parse(parts[2]);
+                    _level = int.Parse(parts[3]);
+                    _experience = int.Parse(parts[4]);
+
+                    Console.WriteLine("Player data loaded.");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid player data format. Failed to load player data.");
+                }
             }
-            Console.WriteLine("Player data loaded.");
         }
         else
         {

@@ -3,10 +3,12 @@ using System;
 public class Menu
 {
     private GoalManager _goalManager;
+    private Player _player;
 
-    public Menu(GoalManager goalManager)
+    public Menu(GoalManager goalManager, Player player)
     {
         _goalManager = goalManager ?? throw new ArgumentNullException(nameof(goalManager));
+        _player = player ?? throw new ArgumentNullException(nameof(player));
     }
 
     public void Start()
@@ -18,7 +20,7 @@ public class Menu
 
             Console.Clear();
 
-            if (choice == 6)
+            if (choice == 8)
             {
                 Console.WriteLine("Goodbye! Exiting the program...\n");
                 return;
@@ -30,14 +32,16 @@ public class Menu
 
     public void DisplayMenu()
     {
+        Console.WriteLine(_player.GetStatus());  
         Console.WriteLine("\nTotal Points: " + _goalManager.GetTotalPoints());
-        Console.WriteLine("\nPlease choose an option:");
         Console.WriteLine("   1. Create New Goal");
         Console.WriteLine("   2. List Goals");
         Console.WriteLine("   3. Save Goals");
         Console.WriteLine("   4. Load Goals");
         Console.WriteLine("   5. Record Event");
-        Console.WriteLine("   6. Quit\n");
+        Console.WriteLine("   6. Save Player");
+        Console.WriteLine("   7. Load Player");
+        Console.WriteLine("   8. Quit\n");
     }
 
     public int GetUserChoice()
@@ -47,7 +51,7 @@ public class Menu
             Console.Write("Please enter your choice: ");
             string input = Console.ReadLine();
 
-            if (int.TryParse(input, out int choice) && (choice >= 1 && choice <= 6))
+            if (int.TryParse(input, out int choice) && (choice >= 1 && choice <= 8))
             {
                 return choice;
             }
@@ -90,8 +94,23 @@ public class Menu
 
             Goal selectedGoal = _goalManager.GetGoals()[goalNumber - 1];
             int pointsAwarded = selectedGoal.RecordEvent();
-            _goalManager.UpdateTotalPoints(pointsAwarded); 
+
+            _player.AddScore(pointsAwarded);  
+            _goalManager.UpdateTotalPoints(pointsAwarded);
+
             Console.WriteLine($"Event recorded. Points awarded: {pointsAwarded}");
+        }
+        else if (choice == 6)
+        {
+            Console.Write("Enter filename to save player data: ");
+            string filename = Console.ReadLine();
+            _player.SavePlayer(filename);
+        }
+        else if (choice == 7)
+        {
+            Console.Write("Enter filename to load player data: ");
+            string filename = Console.ReadLine();
+            _player.LoadPlayer(filename);
         }
         else
         {
