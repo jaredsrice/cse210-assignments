@@ -1,0 +1,75 @@
+@startuml final
+class Program {
+    + static void Main()
+}
+
+class Menu {
+    + static void ShowMenu()
+    + static int GetUserChoice()
+}
+
+class FinanceTracker {
+    - List<Transaction> _transactions
+    - List<Budget> _budgets
+    - CategoryManager _categoryManager
+    + FinanceTracker()  <<constructor>>
+    + void AddTransaction(bool isIncome)
+    + void ViewTransactions()
+    + void SetBudget()
+    + void SaveToFile()
+    + void LoadFromFile()
+}
+
+class Transaction {
+    - decimal _amount
+    - string _category
+    - DateTime _date
+    + Transaction(decimal amount, string category, DateTime date)  <<constructor>>
+    + virtual string GetTransactionType()
+}
+
+class Income {
+    + Income(decimal amount, string category, DateTime date)  <<constructor>>
+    + override string GetTransactionType()
+}
+
+class Expense {
+    + Expense(decimal amount, string category, DateTime date)  <<constructor>>
+    + override string GetTransactionType()
+}
+
+class Budget {
+    - string _category
+    - decimal _limit
+    - decimal _spent
+    + Budget(string category, decimal limit)  <<constructor>>
+    + bool IsOverBudget()
+}
+
+class FileStorage {
+    + static void SaveTransactions(List<Transaction> transactions)
+    + static List<Transaction> LoadTransactions()
+}
+
+class ReportGenerator {
+    + static void ShowSummary(List<Transaction> transactions)
+}
+
+class CategoryManager {
+    - List<string> _categories
+    + CategoryManager()  <<constructor>>
+    + void AddCategory(string category)
+    + bool CategoryExists(string category)
+}
+
+Program --> FinanceTracker : initializes >
+Program --> Menu : calls >
+Menu --> FinanceTracker : interacts >
+FinanceTracker --> Transaction : manages >
+FinanceTracker --> Budget : manages >
+FinanceTracker --> FileStorage : uses >
+FinanceTracker --> ReportGenerator : uses >
+FinanceTracker --> CategoryManager : manages >
+Transaction <|-- Income : inherits
+Transaction <|-- Expense : inherits
+@enduml
