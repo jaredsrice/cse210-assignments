@@ -7,5 +7,5 @@ class Car {
     +start()
     +stop()
 }
-' Hit Command + SHift + P and type PlantUML: Preview Current Diagram
+' Hit Command + Shift + P and type PlantUML: Preview Current Diagram
 @enduml
