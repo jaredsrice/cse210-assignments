@@ -26,14 +26,36 @@ public class FinanceTracker
     }
 
     public void ViewTransactions()
+{
+    Console.WriteLine("Transactions:");
+    if (_transactions.Count == 0)
     {
-        Console.WriteLine("Transactions:");
+        Console.WriteLine("No transactions recorded.");
+    }
+    else
+    {
         foreach (Transaction transaction in _transactions)
         {
-            Console.WriteLine(transaction.GetTransactionType() + "-" + transaction._amount + "-" + transaction._category + "-" + transaction._date);
+            // Console.WriteLine($"{transaction.GetTransactionType()} - {transaction.Amount} - {transaction.Category} - {transaction.Date}");
         }
     }
-// public void SetBudget()
-// public void SavetoFile()
-// public void LoadFromFile()
+}
+
+    public void SetBudget()
+    {
+        Console.WriteLine("SetBudget method called.");
+        // Implement budget setting logic
+    }
+
+    public void SaveToFile()
+    {
+        Console.WriteLine("SaveToFile method called.");
+        // Implement file saving logic
+    }
+
+    public void LoadFromFile()
+    {
+        Console.WriteLine("LoadFromFile method called.");
+        // Implement file loading logic
+    }
 }

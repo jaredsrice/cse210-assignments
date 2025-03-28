@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.InteropServices;
 
 public class Menu
 {
@@ -7,6 +6,11 @@ public class Menu
 
     public static void ShowMenu()
     {
+        Console.WriteLine("Welcome to the Finance Tracker!");
+        Console.WriteLine("================================");
+        Console.WriteLine("Please choose an option from the menu below:");
+        Console.WriteLine("================================");
+
         Console.WriteLine("\nFinance Tracker Menu:");
         Console.WriteLine("1. Add Income");
         Console.WriteLine("2. Add Expense");
@@ -19,31 +23,30 @@ public class Menu
 
     public static int GetUserChoice()
     {
-        Console.WriteLine("Please enter your choice: ");
-        string input = Console.ReadLine();
+        while (true)
+        {
+            Console.WriteLine("\nPlease enter your choice: ");
+            string input = Console.ReadLine();
 
-        if (int.TryParse(input, out int choice) && (choice >= 1 && choice <= 7))
+            if (int.TryParse(input, out int choice) && (choice >= 1 && choice <= 7))
             {
                 return choice;
             }
 
             Console.WriteLine("\nThat's not a valid choice. Please choose again.\n");
+        }
     }
 
     public void RunMenu(int choice)
     {
-        while (choice != 7)
         {
-            ShowMenu();
-            choice = GetUserChoice();
-                
             if (choice == 1)
             {
-                _financeTracker.AddTransaction();
+                _financeTracker.AddTransaction(true);  
             }
             else if (choice == 2)
             {
-                _financeTracker.AddTransaction();
+                _financeTracker.AddTransaction(false); 
             }
             else if (choice == 3)
             {
@@ -51,22 +54,23 @@ public class Menu
             }
             else if (choice == 4)
             {
+                Console.WriteLine("[DEBUG] Calling SetBudget()");
                 _financeTracker.SetBudget();
             }
             else if (choice == 5)
             {
-                _financeTracker.SaveToFile();
+                Console.WriteLine("[DEBUG] Calling SaveToFile()");
+                _financeTracker.SaveToFile();  
             }
             else if (choice == 6)
             {
+                Console.WriteLine("[DEBUG] Calling LoadFromFile()");
                 _financeTracker.LoadFromFile();
             }
             else if (choice == 7)
             {
                 Console.WriteLine("Bye Bye.");
-                break;
             }
         }
     }
 }
-

@@ -2,8 +2,16 @@ using System;
 
 public class Program
 {
-    static void Main(string[] args)
+    public static void Main()
     {
-        Console.WriteLine("Hello FinalProject World!");
+        Menu menu = new Menu();
+        int choice = 0; 
+
+        while (choice != 7) 
+        {
+            Menu.ShowMenu();
+            choice = Menu.GetUserChoice(); 
+            menu.RunMenu(choice); 
+        }
     }
 }
