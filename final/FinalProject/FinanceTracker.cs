@@ -44,18 +44,15 @@ public class FinanceTracker
     public void SetBudget()
     {
         Console.WriteLine("SetBudget method called.");
-        // Implement budget setting logic
     }
 
     public void SaveToFile()
     {
         Console.WriteLine("SaveToFile method called.");
-        // Implement file saving logic
     }
 
     public void LoadFromFile()
     {
         Console.WriteLine("LoadFromFile method called.");
-        // Implement file loading logic
     }
 }
