@@ -11,12 +11,31 @@ public class CategoryManager
     
     public void AddCategory(string category)
     {
-        // temporary
+        category = NormalizeNaming(category);
+        if (!CategoryExists(category))
+        {
+            _categories.Add(category);
+        }
     }
 
     public bool CategoryExists(string category)
     {
-        // temporary
-        return false;
+        category = NormalizeNaming(category);
+        return _categories.Contains(category);
+    }
+
+    private string NormalizeNaming(string input)
+    {
+        if (string.IsNullOrWhiteSpace(input))
+    
+            return "";
+        
+        input = input.Trim().ToLower();
+        return char.ToUpper(input[0]) + input.Substring(1);
+    }
+
+    public string GetNormalizedNaming(string input)
+    {
+        return NormalizeNaming(input);
     }
 }

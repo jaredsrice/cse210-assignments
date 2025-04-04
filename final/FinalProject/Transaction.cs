@@ -19,6 +19,23 @@ public class Transaction
         return "Transaction";
    }
 
-// Add dislay method and getter methods 
+   public void Display()
+   {
+     Console.WriteLine($"{GetTransactionType()} - {Amount:C} - {Category} - {Date}");
+   }
 
+   public decimal Amount
+   {
+     get {return _amount;}
+   }
+
+   public string Category
+   {
+     get {return _category;}
+   }
+
+   public DateTime Date
+   {
+     get {return _date;}
+   }
 }
