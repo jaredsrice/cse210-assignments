@@ -6,9 +6,8 @@ public class CategoryManager
 
     public CategoryManager()
     {
-
     }
-    
+
     public void AddCategory(string category)
     {
         category = NormalizeNaming(category);

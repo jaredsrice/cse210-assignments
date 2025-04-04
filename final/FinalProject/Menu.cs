@@ -11,7 +11,6 @@ public class Menu
         Console.WriteLine("Please choose an option from the menu below:");
         Console.WriteLine("================================");
 
-        Console.WriteLine("\nFinance Tracker Menu:");
         Console.WriteLine("1. Set Budget");
         Console.WriteLine("2. View Budgets");
         Console.WriteLine("3. Add Income");
@@ -43,6 +42,14 @@ public class Menu
     public void RunMenu(int choice)
     {
         {
+            if (choice == 1)
+            {
+                _financeTracker.SetBudget();
+            }
+            else if (choice == 2)
+            {
+                _financeTracker.ViewBudgets();
+            }
             if (choice == 3)
             {
                 _financeTracker.AddTransaction(true);  
@@ -55,10 +62,6 @@ public class Menu
             {
                 _financeTracker.ViewTransactions();
             }
-            else if (choice == 1)
-            {
-                _financeTracker.SetBudget();
-            }
             else if (choice == 6)
             {
                 _financeTracker.SaveToFile();  
@@ -66,10 +69,6 @@ public class Menu
             else if (choice == 7)
             {
                 _financeTracker.LoadFromFile();
-            }
-            else if (choice == 2)
-            {
-                _financeTracker.ViewBudgets();
             }
             else if (choice == 8)
             {

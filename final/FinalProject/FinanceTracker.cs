@@ -60,6 +60,7 @@ public class FinanceTracker
         }
 
         else
+
         {
 
             foreach (Transaction transaction in _transactions)
@@ -68,6 +69,12 @@ public class FinanceTracker
             }
         }
     }
+
+    public List<Transaction> GetTransactions()
+    {
+        return _transactions;
+    }
+
     public void SaveToFile()
     {
         Console.WriteLine("Enter filename: ");
@@ -118,10 +125,5 @@ public class FinanceTracker
                 Console.WriteLine($"{budget.Category}: Limit = {budget.Limit:C}, Spent = {budget.Spent:C}, Over Budget: {budget.IsOverBudget()}, Created On: {budget.Created}");
             }
         }
-    }
-
-    public List<Transaction> GetTransactions()
-    {
-        return _transactions;
     }
 }
